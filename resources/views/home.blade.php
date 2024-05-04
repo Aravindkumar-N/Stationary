@@ -22,11 +22,7 @@
         <th>Operations</th>
       </tr>
     </thead>
-
-    
-    
-    
-  </table> 
+   
 </div>
 <a href='addpage'><button type='submit'class='btn btn-primary'>Click to add</button></a>
 </body>

@@ -13,7 +13,11 @@ use App\Http\Controllers\StoreController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/',[StoreController::class,'home']);
-Route::get('addpage',[StoreController::class,"addpage"]);
-Route::post('addsubmit',[StoreController::class,'addsubmit']);
+Route::get('/', function () {
+    return view('stores.index');
+});
+Route::resource("/store", StoreController::class);
+// Route::resource("/student", StudentController::class);
+// Route::get('/',[StoreController::class,'home']);
+// Route::get('addpage',[StoreController::class,"addpage"]);
+// Route::post('addsubmit',[StoreController::class,'addsubmit']);
