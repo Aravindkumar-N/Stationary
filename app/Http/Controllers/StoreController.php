@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Store;
+use App\Models\Category;
 use Illuminate\View\View;
 
 
@@ -13,8 +14,8 @@ class StoreController extends Controller
 {
     public function index(): View
     {
-        $stores = Store::all();
-        return view ('stores.index')->with('stores', $stores);
+        $store = Store::all();
+        return view ('stores.index')->with('store', $store);
     }
  
     public function create(): View
@@ -51,6 +52,8 @@ class StoreController extends Controller
         Store::destroy($id);
         return redirect('store')->with('flash_message', 'items deleted!'); 
     }
+ 
+    }
     // public function home()
     // {
     //     return view('home');
@@ -76,4 +79,4 @@ class StoreController extends Controller
 
     //     return view('welcome');
     // }
-}
+

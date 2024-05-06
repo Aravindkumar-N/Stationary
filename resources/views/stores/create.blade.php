@@ -37,6 +37,10 @@
       <label for="add">Description:</label>
       <input type="textarea" class="form-control" id="description" placeholder="Enter The Description" name="description">
     </div>
+    <div class="mb-3 mt-3">
+      <label for="CategoryId">Category Id:</label>
+      <input type="number" class="form-control" id="CategoryId" placeholder="Enter Category Id" name="CategoryId">
+    </div>
     
    <input type="submit" class="btn btn-primary" name="" value="submit" >
   </form>

@@ -12,7 +12,9 @@
         <label>Name</label></br>
         <input type="text" name="name" id="name" value="{{$store->name}}" class="form-control"></br>
         <label>price</label></br>
-        <input type="text" name="address" id="address" value="{{$store->price}}" class="form-control"></br>
+        <input type="number" name="price" id="price" value="{{$store->price}}" class="form-control"></br>
+        <label>Category Id</label></br>
+        <input type="number" name="CategoryId" id="CategoryId" value="{{$store->CategoryId}}" class="form-control"></br>
        
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>

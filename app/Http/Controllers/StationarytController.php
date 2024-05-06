@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Store;
+use App\Models\Category;
+use Illuminate\View\View;
 
 class StationarytController extends Controller
 {
@@ -11,11 +16,10 @@ class StationarytController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():View
     {
-        $stores = store::all();
-        return view ('stores.index')->with('stores', $stores);
-    
+        $store = Category::all();
+        return view ('stores.CatIndex')->with('store', $store);
     }
 
     /**
@@ -23,9 +27,9 @@ class StationarytController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create():view
+    public function create():View
     {
-        return view('stores.create');
+        return view('stores.add_cat');
     }
 
     /**
@@ -36,7 +40,9 @@ class StationarytController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Category::create($input);
+        return redirect('cat')->with('flash_message', 'Items Addedd!');
     }
 
     /**
@@ -47,7 +53,8 @@ class StationarytController extends Controller
      */
     public function show($id)
     {
-        //
+        $store = Category::find($id);
+        return view('stores.CatShow')->with('store', $store);
     }
 
     /**
@@ -58,7 +65,8 @@ class StationarytController extends Controller
      */
     public function edit($id)
     {
-        //
+        $store = Category::find($id);
+        return view('stores.CatEdit')->with('store', $store);
     }
 
     /**
@@ -70,7 +78,10 @@ class StationarytController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $store = Category::find($id);
+        $input = $request->all();
+        $store->update($input);
+        return redirect('cat')->with('flash_message', 'Item details Updated!');  
     }
 
     /**
@@ -81,6 +92,15 @@ class StationarytController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        Category::destroy($id);
+        return redirect('cat')->with('flash_message', 'items deleted!'); 
     }
+    public function storesByCategory($categoryId)
+{
+    $stores = Store::where('CategoryId', $categoryId)->get();
+    $category = Category::findOrFail($categoryId);
+
+    return view('stores.index1', compact('stores', 'category'));
+}
 }
