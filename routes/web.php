@@ -14,7 +14,7 @@ use App\Http\Controllers\StoreController;
 |
 */
 Route::get('/', function () {
-    return view('stores.index');
+    return view('welcome');
 });
 Route::resource("/store", StoreController::class);
 // Route::resource("/student", StudentController::class);

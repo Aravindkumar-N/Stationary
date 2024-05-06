@@ -13,7 +13,9 @@ class StationarytController extends Controller
      */
     public function index()
     {
-        //
+        $stores = store::all();
+        return view ('stores.index')->with('stores', $stores);
+    
     }
 
     /**
@@ -21,9 +23,9 @@ class StationarytController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create():view
     {
-        //
+        return view('stores.create');
     }
 
     /**

@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Responce;
-use Illuminate\Http\RedirectResponce;
-use App\Http\Controllers\RedirectResponse;
-use App\Models\store;
-use Illuminate\View\view;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Store;
+use Illuminate\View\View;
 
 
 class StoreController extends Controller
 {
     public function index(): View
     {
-        $stores = store::all();
+        $stores = Store::all();
         return view ('stores.index')->with('stores', $stores);
     }
  
@@ -26,31 +25,31 @@ class StoreController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $input = $request->all();
-        store::create($input);
-        return redirect('stores')->with('flash_message', 'Items Addedd!');
+        Store::create($input);
+        return redirect('store')->with('flash_message', 'Items Addedd!');
     }
     public function show(string $id): View
     {
-        $store = store::find($id);
-        return view('stores.show')->with('stores', $store);
+        $store = Store::find($id);
+        return view('stores.show')->with('store', $store);
     }
     public function edit(string $id): View
     {
-        $store = store::find($id);
-        return view('stores.edit')->with('stores', $store);
+        $store = Store::find($id);
+        return view('stores.edit')->with('store', $store);
     }
     public function update(Request $request, string $id): RedirectResponse
     {
-        $store = store::find($id);
+        $store = Store::find($id);
         $input = $request->all();
         $store->update($input);
-        return redirect('stores')->with('flash_message', 'Item details Updated!');  
+        return redirect('store')->with('flash_message', 'Item details Updated!');  
     }
     
     public function destroy(string $id): RedirectResponse
     {
-        store::destroy($id);
-        return redirect('stores')->with('flash_message', 'items deleted!'); 
+        Store::destroy($id);
+        return redirect('store')->with('flash_message', 'items deleted!'); 
     }
     // public function home()
     // {
