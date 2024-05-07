@@ -13,7 +13,7 @@ use Illuminate\View\View;
 class compareController extends Controller
 {
     public function storesByCategory($categoryId)
-    {
+    {return view('stores.index1', compact('stores', 'category'));
         $stores = Store::where('CategoryId', $categoryId)->get();
         $category = Category::findOrFail($categoryId);
     

@@ -23,8 +23,10 @@ Route::get('/', function () {
 
 Route::resource("/store", StoreController::class);
 Route::resource("/cat", StationarytController::class);
-Route::get("/storesByCategory/{categoryId}",[compareController::class,'storesByCategory']);
-Route::get('/stores/category/{categoryId}', 'compareController@storesByCategory')->name('compare');
+Route::get("/storesByCategory",[compareController::class,'storesByCategory']);
+Route::get("/product", 'StationarytController@productView');
+Route::get('/products/{categoryId}/index1', [StoreController::class, 'index1']);
+
 // Route::resource("/student", StudentController::class);
 // Route::get('/',[StoreController::class,'home']);
 // Route::get('addpage',[StoreController::class,"addpage"]);

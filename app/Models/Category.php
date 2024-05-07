@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Store;
 
 class Category extends Model
 {
@@ -14,6 +15,6 @@ class Category extends Model
     
     public function stores()
     {
-        return $this->hasMany(Store::class);
+        return $this->hasMany(Store::class,'categoryId','id');
     }
 }

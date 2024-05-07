@@ -18,8 +18,8 @@ class StationarytController extends Controller
      */
     public function index():View
     {
-        $store = Category::all();
-        return view ('stores.CatIndex')->with('store', $store);
+        $category = Category::all();
+        return view ('stores.CatIndex')->with('category', $category);
     }
 
     /**
@@ -53,8 +53,8 @@ class StationarytController extends Controller
      */
     public function show($id)
     {
-        $store = Category::find($id);
-        return view('stores.CatShow')->with('store', $store);
+        $category = Category::find($id);
+        return view('stores.CatShow')->with('category', $category);
     }
 
     /**
@@ -65,8 +65,8 @@ class StationarytController extends Controller
      */
     public function edit($id)
     {
-        $store = Category::find($id);
-        return view('stores.CatEdit')->with('store', $store);
+        $category = Category::find($id);
+        return view('stores.CatEdit')->with('category', $category);
     }
 
     /**
@@ -78,9 +78,9 @@ class StationarytController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $store = Category::find($id);
+        $category = Category::find($id);
         $input = $request->all();
-        $store->update($input);
+        $category->update($input);
         return redirect('cat')->with('flash_message', 'Item details Updated!');  
     }
 
@@ -102,5 +102,14 @@ class StationarytController extends Controller
     $category = Category::findOrFail($categoryId);
 
     return view('stores.index1', compact('stores', 'category'));
+}
+public function productView(Request $request) {
+    return view('welcome');
+    $categoryId = $request->input('category');
+
+    // Fetch products based on the category ID
+    $products = Product::where('CategoryId', $categoryId)->get();
+
+    return view('stores.index1', ['name' => $products]);
 }
 }

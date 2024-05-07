@@ -21,11 +21,14 @@
     Catagories
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="">Pen items</a></li>
-    <li><a class="dropdown-item" href="#">Note Books</a></li>
+  <tbody>
+ 
+                     
+    <li><a class="dropdown-item" href="{{url('/products')}}">View Categories</a></li>
+    <!--<li><a class="dropdown-item" href="#">Note Books</a></li>
     <li><a class="dropdown-item" href="#">Guides</a></li>
     <li><a class="dropdown-item" href="#">Bags</a></li>
-    <li><a class="dropdown-item" href="#">daily things</a></li>
+    <li><a class="dropdown-item" href="#">daily things</a></li> -->
     <li><a class="dropdown-item" href="{{ url('/cat') }}">Add categories</a></li>
   </ul>
 </div>
@@ -66,5 +69,6 @@
                         
 
 </div>
+
 </body>
 </html>

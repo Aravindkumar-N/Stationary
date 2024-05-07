@@ -52,8 +52,25 @@ class StoreController extends Controller
         Store::destroy($id);
         return redirect('store')->with('flash_message', 'items deleted!'); 
     }
- 
+    public function index1($categoryId)
+    {return view('stores.index1');
+        $category = Category::find($categoryId);
+        $stores = $category->stores;
+        return view('stores.index1');
+}
+    // public function index1()
+    // {
+    //     $category = Category::find($categoryId);
+    //     $stores = $category->stores()->get();
+    //     foreach ($stores as $store) {
+    //         echo $store->name . ": " . $store->price . ", Quantity: " . $store->quantity . "<br>";
+       
+
+        
+        // return view('stores.index1', compact('stores', 'category'));
     }
+ 
+    
     // public function home()
     // {
     //     return view('home');
@@ -80,3 +97,4 @@ class StoreController extends Controller
     //     return view('welcome');
     // }
 
+    
