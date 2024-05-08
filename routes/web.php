@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
-use App\Http\Controllers\StationarytController;
+use App\Http\Controllers\StationaryController;
 use App\Http\Controllers\compareController;
 
 /*
@@ -22,10 +22,15 @@ Route::get('/', function () {
 
 
 Route::resource("/store", StoreController::class);
-Route::resource("/cat", StationarytController::class);
-Route::get("/storesByCategory",[compareController::class,'storesByCategory']);
-Route::get("/product", 'StationarytController@productView');
-Route::get('/products/{categoryId}/index1', [StoreController::class, 'index1']);
+Route::resource("/cat", StationaryController::class);
+Route::get("/compare",[compareController::class, 'index']);
+Route::get('categories/{categoryId}/stores', [compareController::class, 'viewStores']);
+
+
+//  Route::resource("/cat", StationaryController::class);
+// Route::get("/storesByCategory",[compareController::class,'storesByCategory']);
+// Route::get("/product", 'StationarytController@productView');
+// Route::get('/product/{$id}/index1', [StoreController::class, 'index1']);
 
 // Route::resource("/student", StudentController::class);
 // Route::get('/',[StoreController::class,'home']);

@@ -15,7 +15,9 @@ class StoreController extends Controller
     public function index(): View
     {
         $store = Store::all();
-        return view ('stores.index')->with('store', $store);
+        $category = Category::all();
+        
+        return view ('stores.index',compact('store','category'));
     }
  
     public function create(): View
@@ -53,10 +55,10 @@ class StoreController extends Controller
         return redirect('store')->with('flash_message', 'items deleted!'); 
     }
     public function index1($categoryId)
-    {return view('stores.index1');
-        $category = Category::find($categoryId);
+    { return view('stores.wecome');
+        $category = Category::find($id);
         $stores = $category->stores;
-        return view('stores.index1');
+        return view('stores.index1')->with('stores', $stores);;
 }
     // public function index1()
     // {

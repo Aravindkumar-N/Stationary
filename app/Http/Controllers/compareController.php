@@ -12,11 +12,28 @@ use Illuminate\View\View;
 
 class compareController extends Controller
 {
-    public function storesByCategory($categoryId)
-    {return view('stores.index1', compact('stores', 'category'));
-        $stores = Store::where('CategoryId', $categoryId)->get();
-        $category = Category::findOrFail($categoryId);
-    
-        return view('stores.index1', compact('stores', 'category'));
+    public function index(): View
+    {
+        $stores = Store::with('category')->get();
+        $categories = Category::with('stores')->get();
+
+        return view('stores.index1', compact('stores', 'categories'));
+        // $category = Category::all();
+        // return view ('stores.CatIndex')->with('category', $category);
     }
+
+//     public function viewCategoryStores($categoryId)
+// {
+//     $category = Category::findOrFail($categoryId);
+//     $stores = $category->stores;
+    
+//     return view('stores.index1', compact('category', 'stores'));
+// }
+public function viewStores($categoryId)
+{
+    $category = Category::findOrFail($categoryId);
+    $stores = $category->stores;
+
+    return view('stores.index1', compact('stores','category'));
+}
 }

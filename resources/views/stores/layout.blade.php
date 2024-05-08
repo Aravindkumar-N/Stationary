@@ -7,6 +7,7 @@
     <title>Stationary store</title>
 </head>
 <body>
+    
     <div class="container">
         @yield('content')
     </div>

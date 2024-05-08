@@ -8,7 +8,7 @@
       <form action="{{ url('store/' .$store->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$store->id}}" id="id" />
+        <input type="number" name="id" id="id" value="{{$store->id}}" id="id" />
         <label>Name</label></br>
         <input type="text" name="name" id="name" value="{{$store->name}}" class="form-control"></br>
         <label>price</label></br>

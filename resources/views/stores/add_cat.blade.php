@@ -22,10 +22,11 @@
   <form action="{{ url('cat') }}" method="post">
     @csrf
   <div class="mb-3 mt-3">
-      <label for="category">Category Name:</label>
-      <input type="text" class="form-control" id="category" placeholder="Enter the Item" name="category">
+      <label for="catname">Category Name:</label>
+      <input type="text" class="form-control" id="catname" placeholder="Enter the Item" name="catname">
     </div>
    
+    
    <input type="submit" class="btn btn-primary" name="" value="submit" >
   </form>
 </div>

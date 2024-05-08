@@ -8,9 +8,11 @@
    
   @if($store)
             <h5 class="card-title">Name : {{ $store->name }}</h5>
+            <p class="card-text">Id : {{ $store->id }}</p>
             <p class="card-text">Price : Rs.{{ $store->price }}</p>
             <p class="card-text">Quantity : {{ $store->quantity }} pcs</p>
             <p class="card-text">Description : {{ $store->description}}</p>
+            <p class="card-text">Category Id : {{ $store->CategoryId}}</p>
         @else
             <p>Store not found.</p>
         @endif

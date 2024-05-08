@@ -12,7 +12,7 @@
     <title>Home page</title>
 </head>
 <body>
-    <center><h1>Welcome to NEOPHRON store </h1></center>
+    <center><h1> NEOPHRON store </h1></center>
     <div class="container mt-3">
     <a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
     
@@ -24,7 +24,12 @@
   <tbody>
  
                      
-    <li><a class="dropdown-item" href="{{url('/products')}}">View Categories</a></li>
+   
+      @foreach ($category as $item)
+      <li><a class="dropdown-item" href="{{url('categories/' . $item->id .'/stores') }}">
+      <p> {{ $item->catname }}</p>
+      @endforeach
+    </a></li>
     <!--<li><a class="dropdown-item" href="#">Note Books</a></li>
     <li><a class="dropdown-item" href="#">Guides</a></li>
     <li><a class="dropdown-item" href="#">Bags</a></li>
@@ -33,8 +38,8 @@
   </ul>
 </div>
   
-<h2>User details</h2>
-  <p>Here the details of the user which are inserted in previous page</p>            
+<h2>Product details</h2>
+  <p>Here the details of the products</p>            
   <table class="table table-hover">
     <thead>
       <tr>

@@ -9,12 +9,13 @@ use App\Models\Store;
 class Category extends Model
 {
     use HasFactory;
+
     protected $table = 'categories';
     protected $primaryKey = 'id';
-    protected $fillable = ['category'];
-    
+    protected $fillable = ['catname'];
+
     public function stores()
     {
-        return $this->hasMany(Store::class,'categoryId','id');
+        return $this->hasMany(Store::class,'categoryId');
     }
 }
