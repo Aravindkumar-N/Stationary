@@ -22,7 +22,9 @@ class StoreController extends Controller
  
     public function create(): View
     {
-        return view('stores.create');
+        $store = Store::all();
+        $category = Category::all();
+        return view('stores.create',compact('store','category'));
     }
   
     public function store(Request $request): RedirectResponse
@@ -39,7 +41,8 @@ class StoreController extends Controller
     public function edit(string $id): View
     {
         $store = Store::find($id);
-        return view('stores.edit')->with('store', $store);
+        $category = Category::all();
+        return view('stores.edit',compact('store','category'));
     }
     public function update(Request $request, string $id): RedirectResponse
     {

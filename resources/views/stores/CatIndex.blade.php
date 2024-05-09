@@ -47,7 +47,7 @@
          @endforeach
         </tbody>                              
                         
-
+        <a href="{{ url('store') }}"><button class='btn btn-primary float-end '>Back to home</button></a>
 </div>
 </body>
 </html>

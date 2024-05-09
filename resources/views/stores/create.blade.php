@@ -37,13 +37,22 @@
       <label for="add">Description:</label>
       <input type="textarea" class="form-control" id="description" placeholder="Enter The Description" name="description">
     </div>
-    <div class="mb-3 mt-3">
-      <label for="CategoryId">Category Id:</label>
-      <input type="number" class="form-control" id="CategoryId" placeholder="Enter Category Id" name="CategoryId">
-    </div>
+   
+    <div class="form-group row">    
+     <label for="role" >Category</label>
+         <div class="form-control ">
+              <select class="form-control" id="CategoryId" name="CategoryId" required focus>
+              @foreach ($category as $item)
+                  <option value="{{ $item->id }}"  selected>{{ $item->catname }}</option>        
+                  @endforeach 
+                  <option value="Select categoy" disabled selected>Select Category</option>    
+              </select>
+         </div>
+</div>
     
    <input type="submit" class="btn btn-primary" name="" value="submit" >
-  </form>
+  </form><a href="{{ url('store') }}"><button class='btn btn-primary float-end '>Back to home</button></a>
+  
 </div>
 </body>
 </html>
