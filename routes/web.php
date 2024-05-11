@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StationaryController;
 use App\Http\Controllers\compareController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::resource("/store", StoreController::class);
 Route::resource("/cat", StationaryController::class);
 Route::get("/compare",[compareController::class, 'index']);
 Route::get('categories/{categoryId}/stores', [compareController::class, 'viewStores']);
+Route::resource("/customer", CustomerController::class);
 
 
 //  Route::resource("/cat", StationaryController::class);

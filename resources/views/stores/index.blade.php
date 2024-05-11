@@ -17,13 +17,23 @@
     <div class="container mt-3">
    
    <a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
-   <div class="dropdown float-end">
+   <div class="dropdown float-end mr-3 ml-3 ">
+ <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+   Customer Details
+ </button>
+ <ul class="dropdown-menu">
+ <tbody>                   
+    <li><a class="dropdown-item" href="{{ url('/customer') }}">Customer Login</a></li>   
+   <li><a class="dropdown-item" href="{{ url('/cat') }}">Group</a></li>
+ </ul>
+</div>
+   <div class="dropdown float-end mr-3 ml-3">
  <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
    Catagories
  </button>
  <ul class="dropdown-menu">
  <tbody>                   
-       @foreach ($category as $item)
+       @foreach ($categories as $item)
      <li><a class="dropdown-item" href="{{url('categories/' . $item->id .'/stores') }}">
      <p> {{ $item->catname }}</p>
      @endforeach
@@ -45,18 +55,29 @@
        <th>Item Name</th>
        <th>price</th>
        <th>Quantity</th>
+       <th>Category</th>
        <th>Description</th>
        <th>Operations</th>
      </tr>
    </thead>
    <tbody>
-   @foreach($store as $item)
+   @foreach($stores as $item)
                                    <tr>
                                        <td>{{ $loop->iteration }}</td>
                                        <td>{{ $item->name }}</td>
                                        <td>Rs. {{ $item->price }}</td>
                                        <td>{{ $item->quantity }}</td>
+                                       
+                                       <td>
+              @foreach($categories as $cat)
+                  @if ($cat->id == $item->CategoryId)
+                      {{ $cat->catname }}
+                     
+                  @endif 
+              @endforeach
+          </td>
                                        <td>{{ $item->description }}</td>
+
 
                                        <td>
                                            <!-- <a href="{{ url('/store/'. $item->id) }}" title="View Item"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
@@ -69,7 +90,7 @@
                                            </form>
                                        </td>
                                    </tr>
-                               @endforeach
+    @endforeach
                                </tbody>   
                                
                           
@@ -78,7 +99,7 @@
 </div>
 </div>
     </div>
-    
+
 
 
 </body>

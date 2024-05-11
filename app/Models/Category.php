@@ -12,10 +12,11 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $primaryKey = 'id';
-    protected $fillable = ['catname'];
+    protected $fillable = ['id','catname'];
 
     public function stores()
     {
         return $this->hasMany(Store::class,'categoryId');
+        
     }
 }

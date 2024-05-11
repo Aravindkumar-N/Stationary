@@ -17,6 +17,7 @@ class store extends Model
     
     public function category()
     {
-        return $this->belongsTo(Category::class,'categoryId');
+        return $this->belongsTo(Category::class,'categoryId','catname');
+        return view('stores.index', compact('stores'));
     }
 }

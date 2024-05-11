@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="container mt-3">
-  <h2>Your Item</h2>
+  <h2>Your Product</h2>
   <form action="{{ url('store') }}" method="post">
     @csrf
   <div class="mb-3 mt-3">

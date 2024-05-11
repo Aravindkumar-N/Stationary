@@ -25,29 +25,36 @@
       <tr>
         <th>ID</th>
         <th>Category Name</th>
+        <th>Available Products</th>
         <th>Operations</th>
         
       </tr>
     </thead>
     <tbody>
-    @foreach($category as $item)
+    @foreach ($ProductCount as $category)
       <tr>
       <td>{{ $loop->iteration }}</td>
-      <td>{{ $item->catname }}</td>
+      <td>{{ $category->catname }}</td>
+      <td>{{ $category->product_count }}</td>
       <td>
-        <!-- <a href="{{url('categories/' . $item->id .'/stores') }}" title="View Item"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
-        <a href="{{ url('/cat/' . $item->id . '/edit') }}" title="Edit Item"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-        <form method="POST" action="{{ url('/store/cat' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+       
+        <a href="{{ url('/cat/' . $category->id . '/edit') }}" title="Edit Item"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+        <form method="POST" action="{{ url('/store/cat' . '/' . $category->id) }}" accept-charset="UTF-8" style="display:inline">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
              <button type="submit" class="btn btn-danger btn-sm" title="Delete Item" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
          </form>
        </td>
        </tr>
-         @endforeach
-        </tbody>                              
                         
+             
+         @endforeach
+        </tbody>         
+                   
         <a href="{{ url('store') }}"><button class='btn btn-primary float-end '>Back to home</button></a>
+        <!-- @foreach ($ProductCount as $category)
+    <p>{{ $category->catname }} ({{ $category->product_count }} products)</p>
+@endforeach    -->
 </div>
 </body>
 </html>

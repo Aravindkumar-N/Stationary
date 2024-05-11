@@ -14,16 +14,39 @@ class StoreController extends Controller
 {
     public function index(): View
     {
-        $store = Store::all();
-        $category = Category::all();
+        // $store = Store::all();
+        // $category = Category::all();
+        // $stores = Store::with('category')->get();
+        // $categories = $stores->categories;
+        // return view('stores.chumma', compact('stores','categories'));
+       
+        // $stores = Store::findOrFail($Id);
+        // $categories = $stores->categories;
+        // return view('stores.summa', compact('stores','categore'));
+        // $categories = Category::with('stores')->get();
+        // return view('stores.index', compact('categories'));
+ 
+        $stores = Store::all();
+        $categories = Category::all();
+      
+        return view ('stores.index',compact('stores','categories'));
         
-        return view ('stores.index',compact('store','category'));
+        
+        // $product = Store::all(); 
+         
+        // $params = [
+        //     'title' => 'Product Listing',
+        //     'product' => $product        ];
+ 
+        // return view('stores.cumma')->with($params);
+      
     }
  
     public function create(): View
     {
         $store = Store::all();
         $category = Category::all();
+        
         return view('stores.create',compact('store','category'));
     }
   
@@ -40,9 +63,9 @@ class StoreController extends Controller
     }
     public function edit(string $id): View
     {
-        $store = Store::find($id);
-        $category = Category::all();
-        return view('stores.edit',compact('store','category'));
+        $store = Store::findOrFail($id);
+        $categories = Category::all();
+        return view('stores.edit',compact('store','categories'));
     }
     public function update(Request $request, string $id): RedirectResponse
     {

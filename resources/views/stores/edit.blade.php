@@ -2,11 +2,11 @@
 @section('content')
  
 <div class="card">
-  <div class="card-header">Contactus Page</div>
+  <div class="card-header">Update the Product details</div>
   <div class="card-body">
       
       <form action="{{ url('store/' .$store->id) }}" method="post">
-        {!! csrf_field() !!}
+        @csrf
         @method("PATCH")
         <input type="hidden" name="id" id="id" value="{{$store->id}}" id="id" />
         <label>Name</label></br>
@@ -20,16 +20,21 @@
         <div class="form-group row">    
      <label for="role" >Category</label>
          <div class="form-control ">
-              <select class="form-control" id="CategoryId" name="CategoryId" required focus>
-              @foreach ($category as $item)
-                  <option value="{{ $item->id }}"  selected>{{ $item->catname }}</option>        
-                  @endforeach    
-                  <option value="Select" disabled selected>Select</option> 
-              </select>
+       
+              <select class="form-control" id="CategoryId" name='CategoryId' >
+              @foreach ($categories as $category)
+                  <option value="{{ $category->id }}"  @if ($store->CategoryId == $category->id ) selected @endif>{{ $category->catname }}</option> 
+               
+                  @endforeach  
+               
+                  </select>
+                   
+                  
+              
          </div>
 </div>
        
-        <input type="submit" value="Update" class="btn btn-success"></br>
+       <br> <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
    
   </div>
