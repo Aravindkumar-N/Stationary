@@ -9,6 +9,7 @@
     <title>Customer page</title>
 </head>
 <body>
+<div class="container mt-3">
 <h2>Customer details</h2>
  <p>Here the details of the Customer</p>            
  <table class="table table-hover">
@@ -28,7 +29,14 @@
                                    <tr>
                                        <td>{{ $loop->iteration }}</td>
                                        <td>{{ $item->customer_name }}</td>
-                                       <td>{{ $item->group_id }}</td>
+                                       <td>
+              @foreach($groups as $group)
+                  @if ($group->id == $item->group_id)
+                      {{ $group->groupName }}
+                     
+                  @endif 
+              @endforeach
+          </td>
                                        <td>{{ $item->email }}</td>
                                        <td>{{ $item->billing_address }}</td>
                                        <td>{{ $item->shipping_address }}</td>
@@ -57,6 +65,6 @@
 </div>
     </div>
     <a href="{{ url('/customer/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
-
+</div>
 </body>
 </html>

@@ -15,10 +15,18 @@
       <label for="customer_name"> Name:</label>
       <input type="text" class="form-control" id="customer_name" placeholder="Enter your Name" name="customer_name">
     </div>
-    <div class="mb-3 mt-3">
-      <label for="group_id">Select your Group:</label>
-      <input type="number" class="form-control" id="group_id" placeholder="Group name" name="group_id">
-    </div>
+    <div class="form-group row ">    
+     <label for="group_id" >Group</label>
+         <div class="form-control ">
+              <select class="form-control " id="group_id" name="group_id" required focus>
+              @foreach ($groups as $item)
+                  <option value="{{ $item->id }}"  selected>{{ $item->groupName }}</option>        
+                  @endforeach 
+                  <option value="Select categoy" disabled selected>Select Group</option>    
+              </select>
+         </div>
+</div>
+
     <div class="mb-3 mt-3">
       <label for="mobile">Mobile No:</label>
       <input type="number" class="form-control" id="mobile" placeholder="Enter your Mobile No." name="mobile">

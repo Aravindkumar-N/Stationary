@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Customer;
-// use App\Models\Category;
+use App\Models\Group;
 use Illuminate\View\View;
 
 
@@ -16,7 +16,9 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return view('customers.customer_index')->with('customers', $customers);
+        $groups = Group::all();
+      
+        return view ('customers.customer_index',compact('customers','groups'));
     }
 
    
@@ -24,7 +26,9 @@ class CustomerController extends Controller
     public function create()
     {
         $status=true;
-        return view('customers.customer_create' ,compact('status'));
+        $groups = Group::all();
+        $customers = Customer::all();
+        return view('customers.customer_create' ,compact('status','groups'));
     }
 
     
@@ -45,8 +49,9 @@ class CustomerController extends Controller
     {
         $customers = Customer::findOrFail($id);
         $status=true;
+        $groups = Group::all();
         // $categories = Category::all();
-        return view('customers.customer_edit',compact('status','customers'));
+        return view('customers.customer_edit',compact('status','customers','groups'));
     }
 
     

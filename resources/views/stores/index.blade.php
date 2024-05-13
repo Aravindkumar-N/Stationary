@@ -24,7 +24,7 @@
  <ul class="dropdown-menu">
  <tbody>                   
     <li><a class="dropdown-item" href="{{ url('/customer') }}">Customer Login</a></li>   
-   <li><a class="dropdown-item" href="{{ url('/cat') }}">Group</a></li>
+   <li><a class="dropdown-item" href="{{ url('/group') }}">Group</a></li>
  </ul>
 </div>
    <div class="dropdown float-end mr-3 ml-3">

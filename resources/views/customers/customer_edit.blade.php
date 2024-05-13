@@ -11,8 +11,14 @@
         <input type="hidden" name="id" id="id" value="{{$customers->id}}" id="id" />
         <label>Name</label></br>
         <input type="text" name="customer_name" id="customer_name" value="{{$customers->customer_name}}" class="form-control"></br>
-        <label>Group Id</label></br>
-        <input type="number" name="price" id="price" value="{{$customers->group_id}}" class="form-control"></br>
+          
+       <label for="role" >Group</label>               
+              <select class="form-control" id="CategoryId" name='CategoryId' >
+              @foreach ($groups as $group)
+                  <option value="{{ $group->id }}"  @if ($customers->group_id == $group->id ) selected @endif>{{ $group->groupName }}</option> 
+               @endforeach                 
+                  </select>                                
+              
         <label>Mobile</label></br>
         <input type="number" name="mobile" id="mobile" value="{{$customers->mobile}}" class="form-control"></br>
         <label>Email Id</label></br>

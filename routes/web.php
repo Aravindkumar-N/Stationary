@@ -5,6 +5,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StationaryController;
 use App\Http\Controllers\compareController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::resource("/cat", StationaryController::class);
 Route::get("/compare",[compareController::class, 'index']);
 Route::get('categories/{categoryId}/stores', [compareController::class, 'viewStores']);
 Route::resource("/customer", CustomerController::class);
+Route::resource("/group", GroupController::class);
 
 
 //  Route::resource("/cat", StationaryController::class);
