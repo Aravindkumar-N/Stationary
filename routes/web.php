@@ -6,6 +6,7 @@ use App\Http\Controllers\StationaryController;
 use App\Http\Controllers\compareController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,8 @@ use App\Http\Controllers\GroupController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
+Route::view('layout','layout.index');
+Route::view('chumma','stores.cumma');
 
 Route::resource("/store", StoreController::class);
 Route::resource("/cat", StationaryController::class);
@@ -30,6 +31,12 @@ Route::get('categories/{categoryId}/stores', [compareController::class, 'viewSto
 Route::resource("/customer", CustomerController::class);
 Route::resource("/group", GroupController::class);
 
+Route::view('register','login.registration');
+Route::post('store',[LoginController::class,'store']);
+Route::view('home','home');
+Route::view('login','login.login');
+Route::post('/authenticate',[LoginController::class, 'authenticate']);
+Route::get('logout',[LoginController::class, 'logout']);
 
 //  Route::resource("/cat", StationaryController::class);
 // Route::get("/storesByCategory",[compareController::class,'storesByCategory']);
