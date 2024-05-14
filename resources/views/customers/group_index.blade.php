@@ -1,20 +1,11 @@
-@extends('stores.layout')
+@extends('layout.index')
 @section('content')
  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Home page</title>
-</head>
+
 <body>
-    <center><h1>Welcome to NEOPHRON store </h1></center>
+  
     <div class="container mt-3">
-    <a href="{{ url('/group/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
+    
     
  
   
@@ -57,8 +48,13 @@
     <tbody>
          
                    
-        <a href="{{ url('store') }}"><button class='btn btn-primary float-end '>Back to home</button></a>
        
+       
+</div><div class="footer">
+
+<a href="{{ url('/group/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
 </div>
+
 </body>
+@endsection
 </html>

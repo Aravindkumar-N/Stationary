@@ -15,7 +15,7 @@ class StationaryController extends Controller
    
     public function index(): View
     {
-        $category = Category::all();
+        $categories = Category::all();
         $ProductCount = Category::select('categories.*')
         ->leftJoin('stores', 'categories.id', '=', 'stores.CategoryId')
         ->select('categories.*', store::raw('COUNT(stores.id) as product_count'))
@@ -23,7 +23,7 @@ class StationaryController extends Controller
         ->get();
 
        
-        return view ('stores.CatIndex',compact('category','ProductCount'));
+        return view ('stores.CatIndex',compact('categories','ProductCount'));
     }
 
     

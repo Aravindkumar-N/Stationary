@@ -13,7 +13,7 @@
     <h1 style="color:white;"> Sign Up</h1>
    
 
-    <form method='post' action="{{url('store')}}">
+    <form method='post' action="{{url('login_store')}}">
     @csrf
     <div class="row mb-3 mt-5" >
     <label for="inputname" class="col-sm-2 col-form-label">Name</label>
@@ -45,7 +45,7 @@
   
  
 </form> 
-<p>Already have an account? <a href="{{url('signin')}}">Click here to sign in</a></p>
+<p>Already have an account? <a href="{{url('login')}}">Click here to sign in</a></p>
     </div>
 
 </body>

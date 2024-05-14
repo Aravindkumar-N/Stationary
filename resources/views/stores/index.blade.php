@@ -1,23 +1,15 @@
-@extends('stores.layout')
+@extends('layout.index')
 @section('content')
  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Home page</title>
-</head>
+ 
+
 <body>
-    <center><h1> NEOPHRON store </h1></center>
+    
     <div>
     <div class="container mt-3">
    
    <a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
-   <div class="dropdown float-end mr-3 ml-3 ">
+   <!-- <div class="dropdown float-end mr-3 ml-3 ">
  <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
    Customer Details
  </button>
@@ -37,14 +29,14 @@
      <li><a class="dropdown-item" href="{{url('categories/' . $item->id .'/stores') }}">
      <p> {{ $item->catname }}</p>
      @endforeach
-   </a></li>
-   <!--<li><a class="dropdown-item" href="#">Note Books</a></li>
+   </a></li> 
+   <li><a class="dropdown-item" href="#">Note Books</a></li>
    <li><a class="dropdown-item" href="#">Guides</a></li>
    <li><a class="dropdown-item" href="#">Bags</a></li>
-   <li><a class="dropdown-item" href="#">daily things</a></li> -->
+   <li><a class="dropdown-item" href="#">daily things</a></li> 
    <li><a class="dropdown-item" href="{{ url('/cat') }}">Add categories</a></li>
  </ul>
-</div>
+</div> -->
  
 <h2>Product details</h2>
  <p>Here the details of the products</p>            
@@ -104,4 +96,4 @@
 
 </body>
 
-</html>
+@endsection

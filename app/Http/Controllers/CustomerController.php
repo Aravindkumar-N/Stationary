@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Customer;
 use App\Models\Group;
+use App\Models\Category;
 use Illuminate\View\View;
 
 
@@ -17,8 +18,9 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
         $groups = Group::all();
+        $categories = Category::all();
       
-        return view ('customers.customer_index',compact('customers','groups'));
+        return view ('customers.customer_index',compact('customers','groups','categories'));
     }
 
    

@@ -7,6 +7,8 @@ use App\Http\Controllers\compareController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SaleItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +34,14 @@ Route::resource("/customer", CustomerController::class);
 Route::resource("/group", GroupController::class);
 
 Route::view('register','login.registration');
-Route::post('store',[LoginController::class,'store']);
+Route::post('login_store',[LoginController::class,'store']);
 Route::view('home','home');
 Route::view('login','login.login');
 Route::post('/authenticate',[LoginController::class, 'authenticate']);
 Route::get('logout',[LoginController::class, 'logout']);
+
+Route::resource('/sale', SaleController::class);
+Route::resource('/saleItem', SaleItemController::class);
 
 //  Route::resource("/cat", StationaryController::class);
 // Route::get("/storesByCategory",[compareController::class,'storesByCategory']);

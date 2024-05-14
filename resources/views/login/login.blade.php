@@ -28,7 +28,7 @@
   
   <button type="submit" class="btn btn-primary">Sign in</button>
   </form> 
-  <p>Don't have an account?  <a href="{{url('/')}}">Click here to sign up</a></p>
+  <p>Don't have an account?  <a href="{{url('register')}}">Click here to sign up</a></p>
   
   </div>
  
