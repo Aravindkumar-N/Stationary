@@ -8,7 +8,7 @@
     <div>
     <div class="container mt-3">
    
-   <a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
+  
    <!-- <div class="dropdown float-end mr-3 ml-3 ">
  <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
    Customer Details
@@ -88,9 +88,9 @@
                           
                        
                               
-</div>
-</div>
-    </div>
+</div><a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
+</div> 
+    
 
 
 

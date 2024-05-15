@@ -6,19 +6,19 @@
 <body>
     
     <div>
-    <div class="container mt-3">
+    <div class="container mt-3 ">
    
    <a href="{{ url('/saleItem/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
    
  
-<h2>Product details</h2>
- <p>Here the details of the products</p>            
- <table class="table table-hover">
+<h2>Sale Items details</h2>
+ <p>Here the details of the Sale Items</p>            
+ <table class="table table-hover ">
    <thead>
      <tr>
      <th>ID</th>
-       <th>Sale Id</th>
-       <th>Item Id</th>
+       <th>Invoice Number</th>
+       <th>Product</th>
        <th>Quantity</th>
        <th>unit_price</th>
        <th>total_price</th>
@@ -30,10 +30,16 @@
                                    <tr>
                                        <td>{{ $loop->iteration }}</td>
                                   
-                                       <td>{{ $item->sale_id }}</td>
+                                       <td> @foreach ($sales as $sale)
+                                       @if ($sale->id == $item->sale_id)
+                                    {{ $sale->invoice_no }}  
+                                    @endif 
+                                    @endforeach </td>
                                        <td> @foreach ($stores as $store)
-                  {{ $store->name }}   
-                  @endforeach </td>
+                                       @if ($store->id == $item->item_id)
+                                    {{ $store->name }}  
+                                    @endif 
+                                    @endforeach </td>
                                        <td>{{ $item->quantity }}</td>
                                        <td>{{ $item->unit_price }}</td>
                                        <td>{{ $item->total_price }}</td>

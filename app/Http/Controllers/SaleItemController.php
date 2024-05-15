@@ -17,11 +17,12 @@ class SaleItemController extends Controller
     
     public function index()
     {
+        $sales = Sale::all();
         $sale_items = SaleItem::all();
         $categories = Category::all();
         $customers = Customer::all();
         $stores = Store::all();
-        return view ('sale_item.index',compact('sale_items','categories','customers','stores'));
+        return view ('sale_item.index',compact('sale_items','sales','customers','stores','categories'));
     }
 
   

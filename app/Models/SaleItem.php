@@ -22,4 +22,10 @@ class SaleItem extends Model
             $saleItem->total_price = $totalPrice;
         });
     }
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class,'sale_it');
+        // return view('stores.index', compact('stores'));
+    }
 }

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Sale;
+use App\Models\SaleItem;
+
+use App\Models\Store;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\View\View;
@@ -41,7 +44,15 @@ class SaleController extends Controller
     
     public function show($id)
     {
-        //
+        $sales = Sale::findOrFail($id);
+        $customers = Customer::all();
+        $stores = Store::all();
+        $categories = Category::all();
+        $sale_items = $sales->saleItem;
+
+        $total_price_sum = $sale_items->sum('total_price');
+
+        return view('sales.show',compact('sales','customers','categories','sale_items','stores','total_price_sum'));
     }
 
     
@@ -61,15 +72,20 @@ class SaleController extends Controller
         return redirect('sale')->with('flash_message', 'Item details Updated!'); 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function destroy($id)
     {
         Sale::destroy($id);
         return redirect('sale')->with('flash_message', 'items deleted!'); 
     }
+
+    // public function updateSaleItem(Request $request, $saleItemId)
+    // {
+    //     $saleItem = SaleItem::findOrFail($saleItemId);
+    //     $saleItem->update($request->all());
+    
+    //     // Update the related sale's total price
+    //     $saleItem->sale->save();  // This will trigger the saving event and update the total price
+    // }
 }

@@ -11,7 +11,7 @@
 <header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ url('store') }}"><h2>NEOPHRON</h2></a>
+    <a class="navbar-brand" href="{{ url('sale') }}"><h2>NEOPHRON</h2></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,27 +27,27 @@
           <a class="nav-link" href="{{url('login')}}"><h5>Login</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('sale')}}"><h5>Sale</h5></a>
+          <a class="nav-link" href="{{url('store')}}"><h5>Products</h5></a>
         </li>  
         <li class="nav-item">
           <a class="nav-link" href="{{url('saleItem')}}"><h5>Sale Items</h5></a>
         </li> 
         <li class="nav-item dropdown">
           
-          <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-dark btn-lg dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Customers
-            </button>
-            <ul class="dropdown-menu">                  
+            </button> 
+            <ul class="dropdown-menu dropdown-menu-dark">                  
                 <li><a class="dropdown-item" href="{{ url('/customer') }}">Customer Details</a></li>   
                 <li><a class="dropdown-item" href="{{ url('/group') }}">Group Details</a></li>
             </ul>
         </li>
 
         <li class="nav-item dropdown">
-        <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-dark btn-lg dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Product Details
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-dark">
                    
                 @foreach ($categories as $item)
                 <li><a class="dropdown-item" href="{{url('categories/' . $item->id .'/stores') }}">

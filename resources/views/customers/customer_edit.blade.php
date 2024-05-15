@@ -30,18 +30,18 @@
         <label>Shipping address</label></br>
         <input type="textarea" name="shipping_address" id="shipping_address" value="{{$customers->shipping_address}}" class="form-control"></br>
         <div class="form-group row">    
-     <label for="role" >Status</label>
-         <div class="form-control ">
-       
-         <select name="status"class="form-control">
-    <option value="1" {{ $status ? 'selected' : '' }}>Active</option>
-    <option value="0" {{ $status ? '' : 'selected' }}>Inactive</option>
-</select>
-                   
-                  
-              
-         </div>
-</div>
+      <label for="role" >Status</label>
+          <div class="form-control ">
+        
+          <select name="status"class="form-control">
+      <option value="1" {{ $customers->status ? 'selected' : '' }}>Active</option>
+      <option value="0" {{ $customers->status ? '' : 'selected' }}>Inactive</option>
+  </select>
+                    
+                    
+                
+          </div>
+  </div>
        
        <br> <input type="submit" value="Update" class="btn btn-success"></br>
     </form>

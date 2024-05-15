@@ -28,7 +28,7 @@ Route::view('chumma','stores.cumma');
 
 Route::resource("/store", StoreController::class);
 Route::resource("/cat", StationaryController::class);
-Route::get("/compare",[compareController::class, 'index']);
+
 Route::get('categories/{categoryId}/stores', [compareController::class, 'viewStores']);
 Route::resource("/customer", CustomerController::class);
 Route::resource("/group", GroupController::class);

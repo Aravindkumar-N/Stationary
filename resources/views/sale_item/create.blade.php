@@ -21,13 +21,13 @@
   <form action="{{ url('saleItem') }}" method="post">
     @csrf
     <div class="form-group row">    
-     <label for="role" >Customer Id</label>
+     <label for="role" >Invoice Number</label>
          <div class="form-control ">
               <select class="form-control" id="sale_id" name="sale_id" required focus>
               @foreach ($sales as $sale)
-                  <option value="{{ $sale->id }}"  selected>{{ $sale->customer_id }}</option>        
+                  <option value="{{ $sale->id }}"  selected>{{ $sale->invoice_no }}</option>        
                   @endforeach 
-                  <option value="Select categoy" disabled selected>Select Customer Name</option>    
+                  <option value="Select categoy" disabled selected>Select Invoice No</option>    
               </select>
          </div>
 </div>
@@ -38,7 +38,7 @@
               @foreach ($stores as $store)
                   <option value="{{ $store->id }}"  selected>{{ $store->name }}</option>        
                   @endforeach 
-                  <option value="Select categoy" disabled selected>Select Customer Name</option>    
+                  <option value="Select categoy" disabled selected>Select product Name</option>    
               </select>
          </div>
 </div>
