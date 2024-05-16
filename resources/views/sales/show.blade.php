@@ -1,7 +1,7 @@
 @extends('layout.index')
 @section('content')
  
- 
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="card">
   <div class="card-header"><h2>Sales Details</h2></div>
   <div class="card-body">
@@ -53,14 +53,49 @@
                 <td colspan="4" class="text-right"><strong>Total:</strong></td>
                 <td>{{ $total_price_sum }}</td>
             </tr>
+            <tr>
+               <td colspan="4" class="text-right"><strong></strong></td>
+               <td> <a href="{{ url('/addcart/'. $sales->id) }}"><button type='submit'class='btn btn-primary'>Click to add</button></a></td>
+            </tr>
         </tfoot>
 </table>  
-
+<a href="" @click.prevent="printme()" target="_blank" class = "btn btn-default"><i class="fa fa-print">Print</i></a>
     </div>
        
     </hr>
-    <!-- <a href="{{ url('sale') }}"><button class='btn btn-primary '>Back to home</button></a> -->
+   
   
   </div>
 </div>
+@endsection
+@section('styles')
+<style>
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .card, .card * {
+      visibility: visible;
+    }
+    .card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .card-header {
+      text-align: center;
+    }
+    .card-header::before {
+      content: url('path_to_your_logo.png'); /* Add your logo path here */
+      display: block;
+      margin-bottom: 10px;
+    }
+    .card-footer {
+      display: none; /* Hide elements that are not needed in print */
+    }
+  }
+</style>
 @endsection

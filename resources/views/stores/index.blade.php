@@ -37,6 +37,16 @@
    <li><a class="dropdown-item" href="{{ url('/cat') }}">Add categories</a></li>
  </ul>
 </div> -->
+@if (session('flash_message'))
+    <div id="flash-message" class="alert alert-success" role="alert">
+        {{ session('flash_message') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('#flash-message').fadeOut('slow');
+        }, 3000); // 3 seconds
+    </script>
+@endif
  
 <h2>Product details</h2>
  <p>Here the details of the products</p>            
@@ -83,13 +93,20 @@
                                        </td>
                                    </tr>
     @endforeach
+    <tfoot>
+    <tr>
+      
+      <td class='float-end'><a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
+</div> </td>
+    </tr>
+    </tfoot>
+    
                                </tbody>   
                                
                           
                        
                               
-</div><a href="{{ url('/store/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
-</div> 
+</div>
     
 
 

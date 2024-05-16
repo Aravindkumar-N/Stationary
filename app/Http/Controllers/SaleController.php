@@ -80,6 +80,30 @@ class SaleController extends Controller
         return redirect('sale')->with('flash_message', 'items deleted!'); 
     }
 
+    public function addcart($id)
+    {
+        $sales = Sale::findOrFail($id);
+        $stores = Store::all();
+        $category = Category::all();
+         
+     return view('sales.addcart',compact('stores','category','sales'));
+    }
+
+    public function show2(Request $request, $id){
+        $input = $request->all();
+        SaleItem::create($input);
+
+        $sales = Sale::findOrFail($id);
+        $customers = Customer::all();
+        $stores = Store::all();
+        $categories = Category::all();
+        $sale_items = $sales->saleItem;
+
+        $total_price_sum = $sale_items->sum('total_price');
+
+        return view('sales.show',compact('sales','customers','categories','sale_items','stores','total_price_sum'));
+    }
+    
     // public function updateSaleItem(Request $request, $saleItemId)
     // {
     //     $saleItem = SaleItem::findOrFail($saleItemId);

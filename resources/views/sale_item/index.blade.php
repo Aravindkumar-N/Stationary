@@ -8,7 +8,7 @@
     <div>
     <div class="container mt-3 ">
    
-   <a href="{{ url('/saleItem/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a>
+   <!-- <a href="{{ url('/saleItem/create') }}"><button type='submit'class='btn btn-primary'>Click to add</button></a> -->
    
  
 <h2>Sale Items details</h2>

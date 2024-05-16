@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -50,7 +51,8 @@ class LoginController extends Controller
 
         }
         else{
-            return back()->withErrors(['Invalid Credentials']);
+            Log::info('Login failed for user: ' . $request->input('email'));
+            return back()->withErrors(['email' => 'Invalid Credentials'])->withInput($request->except('password'));
         }
         // $credentials = $request->only('email', 'password');
 

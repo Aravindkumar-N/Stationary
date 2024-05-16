@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleItemController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,8 @@ Route::post('/authenticate',[LoginController::class, 'authenticate']);
 Route::get('logout',[LoginController::class, 'logout']);
 
 Route::resource('/sale', SaleController::class);
+Route::get('/addcart/{id}', [SaleController::class, 'addcart']);
+Route::post('/addcart/{id}/show2', [SaleController::class, 'show2']);
 Route::resource('/saleItem', SaleItemController::class);
 
 //  Route::resource("/cat", StationaryController::class);

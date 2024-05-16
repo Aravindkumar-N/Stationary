@@ -36,4 +36,10 @@ public function viewStores($categoryId)
 
     return view('stores.index1', compact('stores','category'));
 }
+
+public function addcart()
+{
+ return view('sales.addcart');
+}
+
 }

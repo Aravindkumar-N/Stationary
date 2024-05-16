@@ -11,18 +11,39 @@
    
 <div class="container p-5 my-5 bg-dark text-white" style="width:600px;text-align:center;">
     <h1 style="color:white;"> Sign In</h1>
+    <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            
+                                @foreach ($errors->all() as $error)
+                                  <p> {{ $error }}</p>
+                                @endforeach
+                           
+                        </div>
+                    @endif
     <form method='post'action="{{url('/authenticate')}}" >
      @csrf
   <div class="row mb-3 mt-5" >
     <label for="email" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="email"name='email'>
+      
+      @error('email')
+       <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+          </span>
+           @enderror
     </div>
   </div>
   <div class="row mb-3">
     <label for="password" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="password" name='password'>
+      @error('password')
+         <span class="invalid-feedback" role="alert">
+           <strong>{{ $message }}</strong>
+             </span>
+        @enderror
     </div>
   </div>
   

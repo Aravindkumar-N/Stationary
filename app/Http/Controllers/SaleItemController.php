@@ -40,7 +40,7 @@ class SaleItemController extends Controller
     {
         $input = $request->all();
         SaleItem::create($input);
-        return redirect('saleItem')->with('flash_message', 'Items Addedd!');
+        return view('saleItem')->with('flash_message', 'Items Addedd!');
     }
     
 
@@ -81,6 +81,9 @@ class SaleItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SaleItem::destroy($id);
+        return redirect('saleItem')->with('flash_message', 'items deleted!'); 
     }
+
+  
 }
