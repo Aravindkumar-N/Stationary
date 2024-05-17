@@ -55,6 +55,7 @@
                 @endforeach
                 </a></li>
                 <li><a class="dropdown-item" href="{{ url('/cat') }}">Add categories</a></li>
+                <li><a class="dropdown-item" href="{{ url('/tax') }}">Tax Details</a></li>
             
             </ul>
         </li>

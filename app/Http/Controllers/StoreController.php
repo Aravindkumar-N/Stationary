@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Store;
 use App\Models\Category;
+use App\Models\TaxDetail;
 use Illuminate\View\View;
 
 
@@ -28,8 +29,9 @@ class StoreController extends Controller
  
         $stores = Store::all();
         $categories = Category::all();
+        $tax_details = TaxDetail::all();
       
-        return view ('stores.index',compact('stores','categories'));
+        return view ('stores.index',compact('stores','categories','tax_details'));
         
         
         // $product = Store::all(); 
@@ -46,8 +48,9 @@ class StoreController extends Controller
     {
         $store = Store::all();
         $category = Category::all();
+        $tax_details = TaxDetail::all();
         
-        return view('stores.create',compact('store','category'));
+        return view('stores.create',compact('store','category','tax_details'));
     }
   
     public function store(Request $request): RedirectResponse
@@ -65,13 +68,15 @@ class StoreController extends Controller
     {
         $store = Store::findOrFail($id);
         $categories = Category::all();
-        return view('stores.edit',compact('store','categories'));
+        $tax_details = TaxDetail::all();
+        return view('stores.edit',compact('store','categories','tax_details'));
     }
     public function update(Request $request, string $id): RedirectResponse
     {
         $store = Store::find($id);
         $input = $request->all();
         $store->update($input);
+        
         return redirect('store')->with('flash_message', 'Item details Updated!');  
     }
     

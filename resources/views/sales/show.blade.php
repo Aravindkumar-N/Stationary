@@ -59,12 +59,12 @@
             </tr>
         </tfoot>
 </table>  
-<a href="" @click.prevent="printme()" target="_blank" class = "btn btn-default"><i class="fa fa-print">Print</i></a>
+
     </div>
        
     </hr>
-   
-  
+     <a href="{{ url('/addcart/invoice/'. $sales->id) }}"><button type='submit' target='_blank'class='btn btn-danger float-end mx-1'>View Invoice</button></a>
+     <a href="{{ url('/addcart/invoice/'. $sales->id.'/generate') }}"><button type='submit' class='btn btn-warning float-end mx-1'>Download Invoice</button></a>
   </div>
 </div>
 @endsection

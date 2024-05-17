@@ -33,6 +33,17 @@
               
          </div>
 </div>
+<div class="form-group row">    
+<label for="role" >Tax Type</label>
+         <div class="form-control ">
+       
+              <select class="form-control" id="tax_id" name='tax_id' >
+              @foreach ($tax_details as $tax)
+                  <option value="{{ $tax->id }}" selected>{{ $tax->tax_name }}</option> 
+                  @endforeach                 
+                  </select>          
+         </div>
+</div>
        
        <br> <input type="submit" value="Update" class="btn btn-success"></br>
     </form>

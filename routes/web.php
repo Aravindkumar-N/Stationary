@@ -9,6 +9,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleItemController;
+use App\Http\Controllers\TaxController;
 
 
 /*
@@ -44,7 +45,10 @@ Route::get('logout',[LoginController::class, 'logout']);
 Route::resource('/sale', SaleController::class);
 Route::get('/addcart/{id}', [SaleController::class, 'addcart']);
 Route::post('/addcart/{id}/show2', [SaleController::class, 'show2']);
+Route::get('/addcart/invoice/{id}', [SaleController::class, 'viewInvoice']);
+Route::get('/addcart/invoice/{id}/generate', [SaleController::class, 'generateInvoice']);
 Route::resource('/saleItem', SaleItemController::class);
+Route::resource('/tax', TaxController::class);
 
 //  Route::resource("/cat", StationaryController::class);
 // Route::get("/storesByCategory",[compareController::class,'storesByCategory']);

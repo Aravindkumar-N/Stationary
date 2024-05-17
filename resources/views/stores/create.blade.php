@@ -49,6 +49,17 @@
               </select>
          </div>
 </div>
+<div class="form-group row">    
+     <label for="role" >Tax </label>
+         <div class="form-control ">
+              <select class="form-control" id="tax_id" name="tax_id" required focus>
+              @foreach ($tax_details as $item)
+                  <option value="{{ $item->id }}"  selected>{{ $item->tax_name }}</option>        
+                  @endforeach 
+                  <option value="Select tax type" disabled selected>Select Tax type</option>    
+              </select>
+         </div>
+</div>
     
    <input type="submit" class="btn btn-primary" name="" value="submit" >
   </form><a href="{{ url('store') }}"><button class='btn btn-primary float-end '>Back to home</button></a>

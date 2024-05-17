@@ -7,11 +7,12 @@ use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Sale;
 use App\Models\SaleItem;
-
 use App\Models\Store;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\View\View;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 class SaleController extends Controller
 {
@@ -96,20 +97,47 @@ class SaleController extends Controller
         $sales = Sale::findOrFail($id);
         $customers = Customer::all();
         $stores = Store::all();
+        $tax_details = TaxDetail::all();
+        $categories = Category::all();
+//         $sale_items = $sales->saleItem;
+//         // Creating or updating a SaleItem
+// $saleItem = new SaleItem();
+// $saleItem->item_id = $itemId; // Set the item_id from request or elsewhere
+// $saleItem->quantity = $quantity; // Set the quantity from request or elsewhere
+// $saleItem->unit_price = $unitPrice; // Set the unit price from request or elsewhere
+
+// // Calculate and set the total price
+// $saleItem->calculateTotalPrice();
+
+// // Save the SaleItem
+// $saleItem->save();
+        
+
+        $total_price_sum = $sale_items->sum('total_price');
+
+        return view('sales.show',compact('tax_details','sales','customers','categories','sale_items','stores','total_price_sum'));
+    }
+    
+
+    public function viewInvoice(int $id){
+        $sales = Sale::findOrFail($id);
+
+        $customers = Customer::all();
+        $stores = Store::all();
         $categories = Category::all();
         $sale_items = $sales->saleItem;
 
         $total_price_sum = $sale_items->sum('total_price');
 
-        return view('sales.show',compact('sales','customers','categories','sale_items','stores','total_price_sum'));
+        return view('sales.invoice.view_invoice',compact('sales','customers','categories','sale_items','stores','total_price_sum'));
     }
-    
-    // public function updateSaleItem(Request $request, $saleItemId)
-    // {
-    //     $saleItem = SaleItem::findOrFail($saleItemId);
-    //     $saleItem->update($request->all());
-    
-    //     // Update the related sale's total price
-    //     $saleItem->sale->save();  // This will trigger the saving event and update the total price
-    // }
+
+    public function generateInvoice(int $id){
+        $sales = Sale::findOrFail($id);
+        
+        $data = ['sales' => $sales];
+        $todaydate = Carbon::now()->format('d-m-Y');    
+        $pdf = Pdf::loadView('sales.invoice.view_invoice', $data);
+        return $pdf->download('invoice'.$sales->id.'-'.$todaydate.'pdf');
+    }
 }
