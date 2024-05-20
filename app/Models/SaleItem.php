@@ -32,31 +32,31 @@ class SaleItem extends Model
     // }
 
 
-     protected static function boot()
-     {
-        parent::boot();
+    //  protected static function boot()
+    //  {
+    //     parent::boot();
 
-           static::saving(function ($saleItem) {
-             // Calculate the total_price before saving
-              $totalPrice = $saleItem->quantity * $saleItem->unit_price;
-              $saleItem->total_price = $totalPrice;
+    //        static::saving(function ($saleItem) {
+    //          // Calculate the total_price before saving
+    //           $totalPrice = $saleItem->quantity * $saleItem->unit_price;
+    //           $saleItem->total_price = $totalPrice;
 
-    //         $stores= $saleItem->stores; // Assuming a relationship between SaleItem and Item, and Item and Product
-    //         // $store = $product->store; // Assuming a relationship between Product and Store
+    // //         $stores= $saleItem->stores; // Assuming a relationship between SaleItem and Item, and Item and Product
+    // //         // $store = $product->store; // Assuming a relationship between Product and Store
         
-    //         // Fetch the associated tax rate from the tax_details table
-    //         $tax_percentage = $stores->TaxDetail->tax_percentage; // Assuming a relationship between Store and TaxDetail, and TaxDetail and TaxDetails
+    // //         // Fetch the associated tax rate from the tax_details table
+    // //         $tax_percentage = $stores->TaxDetail->tax_percentage; // Assuming a relationship between Store and TaxDetail, and TaxDetail and TaxDetails
         
-    //         // Calculate the subtotal
-    //         $subtotal = $saleItem->quantity * $saleItem->unit_price;
+    // //         // Calculate the subtotal
+    // //         $subtotal = $saleItem->quantity * $saleItem->unit_price;
         
-    //         // Calculate the total price with tax
-    //         $totalPriceWithTax = ($subtotal *$tax_percentage) / 100;
+    // //         // Calculate the total price with tax
+    // //         $totalPriceWithTax = ($subtotal *$tax_percentage) / 100;
         
-    //         // $saleItem->total_price = $totalPriceWithTax;
-       });
+    // //         // $saleItem->total_price = $totalPriceWithTax;
+    //    });
         
-    }
+    // }
 
     public function sale()
     {

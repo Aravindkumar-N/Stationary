@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Sale;
 use App\Models\SaleItem;
+use App\Models\TaxDetail;
 use App\Models\Store;
 use App\Models\Category;
 use App\Models\Customer;
@@ -86,37 +87,62 @@ class SaleController extends Controller
         $sales = Sale::findOrFail($id);
         $stores = Store::all();
         $category = Category::all();
+        $tax_details = TaxDetail::all();
          
-     return view('sales.addcart',compact('stores','category','sales'));
+     return view('sales.addcart',compact('stores','category','sales','tax_details'));
     }
 
     public function show2(Request $request, $id){
-        $input = $request->all();
-        SaleItem::create($input);
+        // Validate the request data
+    $validated = $request->validate([
+        'sale_id' => 'required|exists:sales,id',
+        'item_id' => 'required|exists:stores,id',
+        'quantity' => 'required|integer',
+        'unit_price' => 'required|numeric',
+        'tax_id' => 'required|exists:tax_details,id',
+    ]);
 
-        $sales = Sale::findOrFail($id);
-        $customers = Customer::all();
-        $stores = Store::all();
-        $tax_details = TaxDetail::all();
-        $categories = Category::all();
-//         $sale_items = $sales->saleItem;
-//         // Creating or updating a SaleItem
-// $saleItem = new SaleItem();
-// $saleItem->item_id = $itemId; // Set the item_id from request or elsewhere
-// $saleItem->quantity = $quantity; // Set the quantity from request or elsewhere
-// $saleItem->unit_price = $unitPrice; // Set the unit price from request or elsewhere
+  
+    $taxDetail = TaxDetail::find($validated['tax_id']);
+    $taxPercentage = $taxDetail->tax_percentage;
 
-// // Calculate and set the total price
-// $saleItem->calculateTotalPrice();
+    
+     $sub_total = $validated['unit_price'] * $validated['quantity'];
+    $taxAmount = ($sub_total * $taxPercentage) / 100;
+    $totalPrice = $sub_total + $taxAmount;
 
-// // Save the SaleItem
-// $saleItem->save();
-        
+   
+    $sale_items = new SaleItem();
+    $sale_items->sale_id = $validated['sale_id'];
+    $sale_items->item_id = $validated['item_id'];
+    $sale_items->quantity = $validated['quantity'];
+    $sale_items->unit_price = $validated['unit_price'];
+    $sale_items->total_price = $totalPrice;
+    $sale_items->save();
 
-        $total_price_sum = $sale_items->sum('total_price');
+    $sale_items = SaleItem::where('sale_id', $id)->get();
 
-        return view('sales.show',compact('tax_details','sales','customers','categories','sale_items','stores','total_price_sum'));
-    }
+   
+    $total_price_sum = $sale_items->sum('total_price');
+
+    $sale = Sale::findOrFail($id);
+    $sale->total_price = $total_price_sum;
+    $sale->save();
+
+
+   
+    $sales = Sale::findOrFail($id);
+    $customers = Customer::all();
+    $stores = Store::all();
+    $tax_details = TaxDetail::all();
+    $categories = Category::all();
+
+   
+   
+
+  
+    return view('sales.show', compact('tax_details', 'sales', 'customers', 'categories', 'stores', 'sale_items', 'total_price_sum'));
+}
     
 
     public function viewInvoice(int $id){
@@ -139,5 +165,10 @@ class SaleController extends Controller
         $todaydate = Carbon::now()->format('d-m-Y');    
         $pdf = Pdf::loadView('sales.invoice.view_invoice', $data);
         return $pdf->download('invoice'.$sales->id.'-'.$todaydate.'pdf');
+    }
+
+    public function show3(Request $request, $id){
+        $input = $request->all();
+        SaleItem::create($input);
     }
 }
